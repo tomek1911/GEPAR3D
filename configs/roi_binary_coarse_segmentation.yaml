@@ -1,0 +1,98 @@
+title: Coarse binary segmentation - preprocessing step for GEPAR3D 
+
+
+experiment:
+  name: binary_coarse_segmentation
+
+args:
+  comet: True
+  seed: 48
+  tags: binary#coarse
+  data: data/china
+  cache_dir: data/cached_datasets
+  cuda_device_id: 0
+  deterministic_algorithms: False
+  use_random_sampler: False
+  checkpoint_dir: dentnet/coarse
+  use_json_split: True
+  clear_cache: False
+  model_name: UNet
+  scheduler_name: warmup
+  warmup_steps: 1      
+  scheduler_gamma: 0.1
+  stop_early: True
+  patience: 4
+  delta: 0.001
+  classes: 1
+  seg_loss_name: Dice
+  weighted_cls: False
+  include_background_loss: True
+  include_background_metrics: True
+  split: 1
+  keys: 
+    - image
+    - label
+  epochs: 501
+  patch_size: 
+    - 256
+    - 256
+    - 256
+  spatial_crop_size: 
+    - 224
+    - 192
+    - 160
+  spatial_crop_margin:
+    - 32
+    - 32
+    - 32
+  padding_size:
+    - 256
+    - 256
+    - 256
+  crop_foreground: False
+  batch_size: 2
+  batch_size_val: 1
+  pixdim: 0.4
+  rotation_range: 0.1
+  z_score_norm: False
+  houndsfield_clip: 5000     
+  crop_samples: 2    
+  num_workers: 0
+  num_threads: 8
+  pin_memory: False
+  n_features: 16
+  unet_depth: 5
+  norm: instance
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  background_weight: 0.1
+  optimizer: AdamW
+  adam_eps: 1.0e-8
+  gradient_accumulation: 1
+  parallel: False
+  gpu_frac: 1.0
+  continue_training: False
+  use_scaler: False
+  autocast_dtype: float32
+  grad_clip: True 
+  max_grad_norm: 1.0
+  trained_model: null
+  save_checkpoints: True
+  save_interval: 200
+  save_optimiser_interval: 1000
+  save_optimizer: True           
+  start_epoch: 0
+  print_config: False
+  device: cuda
+  visible_devices: 0,1
+  cuda_device_id: 0
+  is_log_image: True
+  is_log_3d: True
+  validation_interval: 50
+  log_batch_interval: 10
+  log_metrics_interval: 25
+  multiclass_metrics_interval: -1
+  multiclass_metrics_epoch: -1
+  log_slice_interval: 10
+  log_3d_scene_interval_training: 50
+  log_3d_scene_interval_validation: 50

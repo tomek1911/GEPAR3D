@@ -1,0 +1,119 @@
+title: GEPAR3D - Geometry Prior-Assisted Learning for 3D Tooth Segmentation
+
+experiment:
+  name: geometric_prior_multitask
+  source: cmd #options: cmd, yaml
+
+args:
+  comet: True
+  debug_subset: False
+  seed: 48
+  tags: gepar3d
+  is_local_ssd: False
+  data: data/china
+  cache_dir: data/cached_datasets
+  cuda_device_id: 1
+  deterministic_algorithms: False
+  use_random_sampler: False
+  use_thread_loader: True
+  checkpoint_dir: gepar3d/multitask
+  use_json_split: True
+  clear_cache: False
+  model_name: GEPAR3D-ResUnet34
+  scheduler_name: warmup
+  warmup_steps: 0
+  scheduler_gamma: 0.1
+  stop_early: False
+  patience: 3
+  delta: 0.0005
+  classes: 33
+  seg_loss_name: GWD
+  weighting_mode: 'default'
+  classification_loss: cross_entropy
+  focal_gamma: 0.5
+  weighted_cls: True
+  wasserstein_config: geom_prior
+  include_background_loss: True
+  include_background_metrics: False
+  is_volume_weighted_dir: False
+  split: 1
+  keys: 
+    - image
+    - label
+    - edt
+    - edt_dir
+    - seed
+  loss_weights:
+    edt: 10
+    seed: 10
+    seg: 1.0e-1
+    seg_mlt: 1.0e-1
+    dir: 1.0e-6
+    gwd: 1.0
+    bg: 1.0
+  epochs: 1001
+  patch_size: 
+    - 128
+    - 128
+    - 128
+  spatial_crop_size: 
+    - 224
+    - 192
+    - 160
+  spatial_crop_margin:
+    - 32
+    - 32
+    - 32
+  padding_size:
+    - 256
+    - 256
+    - 256
+  crop_foreground: True
+  lazy_interpolation: False
+  batch_size: 2
+  batch_size_val: 1
+  crop_samples: 2
+  pixdim: 0.4
+  z_score_norm: False
+  rotation_range: 0.1
+  houndsfield_clip: 5000       
+  num_workers: 0
+  num_threads: 8
+  pin_memory: False
+  n_features: 32
+  unet_depth: 5
+  norm: instance
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+  background_weight: 0.1
+  optimizer: AdamW
+  adam_eps: 1.0e-8
+  gradient_accumulation: 1
+  parallel: False
+  gpu_frac: 1.0
+  continue_training: False
+  use_scaler: False
+  autocast_dtype: float32
+  grad_clip: True 
+  max_grad_norm: 1.0
+  trained_model: null
+  save_checkpoints: True
+  save_interval: 50
+  save_optimiser_interval: 200
+  save_optimizer: True           
+  start_epoch: 0
+  print_config: False
+  perform_test: True
+
+  device: cuda
+  visible_devices: 0,1
+  is_log_image: True
+  is_log_3d: True
+  validation_interval: 50
+  log_batch_interval: 10
+  log_metrics_interval: 25
+  multiclass_metrics_interval: 50
+  multiclass_metrics_epoch: 50
+  log_slice_interval: 10
+  log_3d_scene_interval_training: 100
+  log_3d_scene_interval_validation: 100

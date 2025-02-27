@@ -1,0 +1,90 @@
+title: Experiments for GEPAR3D - Geometry Prior-Assisted Learning for 3D Tooth Segmentation
+
+#Table 1
+general_segmentation_methods:
+  experiments:
+    - UNet
+    - VNet
+    - ResUNet34
+    - SwinUNETR
+    - SwinUNETRv2
+    - SwinSMT
+    - VSmTrans
+    - SegMamba
+
+  update_config:
+    general:
+        clear_cache: False
+        epochs: 1001
+        crop_samples: 2
+        seg_loss_name: GWD
+        weighted_cls: True
+        cuda_device_id: 1
+        checkpoint_dir: general_segmentation_methods
+        comet: False
+        save_checkpoints: True
+    # recipe transformer learning warmup
+    SwinUNETR:
+      sheduler: warmup_restarts
+      first_cycle_steps: 1001
+      warmup_steps: 100
+      min_lr: 1.0e-6
+    SwinUNETRv2:
+      sheduler: warmup_restarts
+      first_cycle_steps: 1001
+      warmup_steps: 100
+      min_lr: 1.0e-6
+    SwinSMT:
+      sheduler: warmup_restarts
+      first_cycle_steps: 1001
+      warmup_steps: 100
+      min_lr: 1.0e-6
+      num_experts: 16
+    VSmTrans:
+      sheduler: warmup_restarts
+      first_cycle_steps: 1001
+      warmup_steps: 100
+      min_lr: 1.0e-6
+
+
+# Table 2
+gepar3d_ablation_study:
+  experiments:
+    - DWCE #ResUNet34: Dice + Weighted Cross-Entropy
+    - DWCE_EDT #deep watershed
+    - DWCE_EDT_DIR # #deep watershed
+
+  update_config:
+    general:
+      model_name: GEPAR3D-ResUnet34
+      cuda_device_id: 1
+      clear_cache: False
+      
+      seg_loss_name: WCE_GWD #WCE_DICE
+      dice_loss_type: gwd
+      wasserstein_config: geom_prior
+      background_penalty: 2.0
+      background_penalty_FP: 0.0
+      background_penalty_FN: 0.0
+      is_normalize_wsm: True
+      weighted_cls: True
+      classification_loss: cross_entropy
+      include_background_gwd: False
+      is_binary_dice: False
+      binary_dice_weight: 0.5
+      positive_feedback_gradient: False
+      epochs: 1001
+      multiclass_loss_epoch: 0
+      validation_interval: 50
+      log_batch_interval: 10
+      log_metrics_interval: 10
+      multiclass_metrics_interval: 50
+      multiclass_metrics_epoch: 50
+      log_slice_interval: 10
+      log_3d_scene_interval_training: 100
+      log_3d_scene_interval_validation: 100
+      checkpoint_dir: gepar3d/ablation_study
+      #debug flags 
+      comet: True
+      debug_subset: False
+      save_checkpoints: True
