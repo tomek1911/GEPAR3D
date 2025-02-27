@@ -1,6 +1,5 @@
 title: Coarse binary segmentation - preprocessing step for GEPAR3D 
 
-
 experiment:
   name: binary_coarse_segmentation
 
@@ -13,7 +12,7 @@ args:
   cuda_device_id: 0
   deterministic_algorithms: False
   use_random_sampler: False
-  checkpoint_dir: dentnet/coarse
+  checkpoint_dir: coarse
   use_json_split: True
   clear_cache: False
   model_name: UNet

@@ -17,7 +17,7 @@ args:
   delta: 0.001
   classes: 33
   seg_loss_name: DiceCELoss
-  classification_loss: cross_entropy #Options: cross_entropy, focal_loss, sice_loss
+  classification_loss: cross_entropy
   correctnes_term: False
   focal_gamma: 0.5
   weighted_cls: True
@@ -43,7 +43,7 @@ args:
   crop_foreground: True
   batch_size: 2
   batch_size_val: 1
-  crop_samples: 2 #batch_size * crop_samples = 4
+  crop_samples: 2
   pixdim: 0.4
   houndsfield_clip: 5000    
   z_score_norm: False  
