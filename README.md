@@ -2,6 +2,15 @@
 ---
 This is the official code for "GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation" accepted for the 28th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI) 2025.
 
+Complete code comming soon.
+
+### Data
+Datasets related to this paper:
+- https://www.nature.com/articles/s41467-022-29637-2 (Z.Cui et al.)
+- https://zenodo.org/records/15739014 (GEPAR3D T.Szczepański et al.)
+- https://ditto.ing.unimore.it/toothfairy2/ (Bolelli et al.)
+
+
 ### Details
 
 - configs/data_split.json - exact patient IDS used for evaluation
