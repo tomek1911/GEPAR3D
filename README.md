@@ -6,9 +6,9 @@ Complete code comming soon.
 
 ### Data
 Datasets related to this paper:
-- https://zenodo.org/records/15739014 (GEPAR3D T.Szczepański et al.)
-- https://www.nature.com/articles/s41467-022-29637-2 (Z.Cui et al.)
-- https://ditto.ing.unimore.it/toothfairy2/ (Bolelli et al.)
+- https://zenodo.org/records/15739014 - GEPAR3D T.Szczepański et al.
+- https://www.nature.com/articles/s41467-022-29637-2  - Z.Cui et al.
+- https://ditto.ing.unimore.it/toothfairy2/ - Bolelli et al.
 
 
 ### Details
