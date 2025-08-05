@@ -1,0 +1,59 @@
+LICENSE: Non-Commercial Research Use License – No Redistribution (NCRU-NR)
+
+Title: GEPAR3D CBCT Dataset 2025
+Version: v1.0
+Date: 08.2025
+Owner: Sano Centre for Computational Personalised Medicine
+
+1. GRANT OF LICENSE
+
+Subject to the terms of this Agreement, the Dataset Owner ("Licensor") grants the Recipient a non-exclusive, non-transferable, revocable license to access and use the Dataset solely for non-commercial academic research purposes.
+
+2. RESTRICTIONS
+
+The Recipient agrees to the following conditions:
+(a) The Dataset may not be redistributed, sublicensed, published, uploaded to repositories (e.g., Zenodo, GitHub, etc.), or otherwise made available to third parties without prior written permission from the Licensor.
+(b) The Dataset may not be used for commercial purposes or in projects involving commercial entities, products, or services.
+(c) The Dataset may not be used to train or validate commercial machine learning models or be integrated into commercial software.
+(d) Derivative works or modified versions of the Dataset are also subject to this license and may not be redistributed.
+
+3. ATTRIBUTION
+
+If research results are published using this Dataset, the Recipient must provide proper attribution as follows:
+@misc{szczepański2025gepar3dgeometrypriorassistedlearning,
+      title={GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation}, 
+      author={Tomasz Szczepański and Szymon Płotka and Michal K. Grzeszczyk and Arleta Adamowicz and Piotr Fudalej and Przemysław Korzeniowski and Tomasz Trzciński and Arkadiusz Sitek},
+      year={2025},
+      eprint={2508.00155},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV},
+      url={https://arxiv.org/abs/2508.00155}, 
+}
+
+4. DATA SECURITY
+
+The Recipient shall implement reasonable measures to prevent unauthorized access, use, or distribution of the Dataset.
+
+5. TERMINATION
+
+Any violation of this Agreement will result in the immediate termination of the license. Upon termination, the Recipient must delete all copies of the Dataset in their possession.
+
+6. NO WARRANTY
+
+The Dataset is provided "as is" without warranty of any kind, express or implied. The Licensor shall not be liable for any damages resulting from the use or misuse of the Dataset.
+
+7. GOVERNING LAW
+
+This Agreement shall be governed by and construed in accordance with the laws of EU.
+
+8. ACCEPTANCE
+
+By accessing the Dataset, the Recipient acknowledges and agrees to be bound by the terms of this Agreement.
+
+---
+
+For any questions or requests, contact:
+
+Tomasz Szczepański
+Sano Centre for Computational Personalised Medicine
+t.szczepanski@sanoscience.org
