@@ -1,0 +1,92 @@
+<!--
+Paper Project Website Scaffold
+-------------------------------
+Folder layout suggestion (place this index.html at project root):
+
+project-website/
+│
+├─ index.html          # main landing page
+├─ about.html          # optional extra page
+├─ css/
+│   └─ style.css       # main stylesheet
+├─ js/
+│   └─ main.js         # interactivity + vtk.js loader
+├─ assets/
+│   ├─ images/         # static images, figures
+│   ├─ gifs/           # segmentation gifs
+│   ├─ video/          # teaser.mp4, teaser.webm
+│   └─ data/           # nii.gz sample volumes
+└─ papers/
+    └─ paper.pdf       # link to your arXiv paper
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Title — Project Website</title>
+  <meta name="description" content="Project website for Paper Title (arXiv:xxxx.xxxxx).">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/vtk.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1 class="title">Paper Title</h1>
+      <p class="authors">Author A, Author B, Author C</p>
+      <div class="links">
+        <a class="btn" href="papers/paper.pdf">[Paper PDF]</a>
+        <a class="btn" href="https://arxiv.org/abs/2508.00155">[arXiv]</a>
+        <a class="btn" href="https://github.com/USERNAME/REPO">[Code]</a>
+      </div>
+      <div class="teaser">
+        <img src="assets/images/teaser.png" alt="Teaser figure">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>Copy your abstract here for quick reference.</p>
+    </section>
+
+    <section id="method">
+      <h2>Method</h2>
+      <img src="assets/images/method.png" alt="Method figure">
+      <p>Short description of your method, referencing the figure.</p>
+    </section>
+
+    <section id="results">
+      <h2>Results</h2>
+      <div class="gallery">
+        <img src="assets/gifs/result1.gif" alt="Segmentation result 1">
+        <img src="assets/gifs/result2.gif" alt="Segmentation result 2">
+      </div>
+    </section>
+
+    <section id="viewer">
+      <h2>Interactive Viewer</h2>
+      <div id="vtk-container" class="vtk-viewer"></div>
+      <p class="muted">Interactive 3D segmentation preview using vtk.js.</p>
+    </section>
+
+    <section id="citation">
+      <h2>Citation</h2>
+      <pre><code>@article{your2025paper,
+  title={Paper Title},
+  author={Author, A. and Author, B. and Author, C.},
+  journal={arXiv preprint arXiv:2508.00155},
+  year={2025}
+}</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Authors. Built with HTML/CSS/JS. Hosted on GitHub Pages.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
