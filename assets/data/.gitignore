@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# Do not ignore this gitignore file itself
+!.gitignore
+
+# Do not ignore VTK_data folder and its contents
+!VTK_data/
+!VTK_data/**
+
+# Do not ignore colormap.txt
+!colormap.txt

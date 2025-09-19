@@ -1,0 +1,68 @@
+.logo img {
+    width: 230px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #4f7bd9;
+}
+
+.width_scale_img{
+width: 50%;
+height: auto; 
+display: block; 
+margin: 0 auto;
+}
+
+.width_scale_img_75{
+width: 75%;
+height: auto; 
+display: block; 
+margin: 0 auto;
+}
+
+.gepar3d-word {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #4f7bd9;
+  font-size: 1.1em;
+}
+
+.gepar3d-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #4f7bd9;
+  font-size: 1.2em;
+}
+
+.image-caption {
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.logo img:hover {
+    width: 230px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #4f7bd9;
+}
+
+.container.is-max-desktop.head {
+    max-width: 95%;
+}
+
+.button.is-rounded:hover {
+    transform: scale(1.02);
+    background-color: #4f7bd9;
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+
+}
