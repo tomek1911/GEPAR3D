@@ -1,92 +1,485 @@
-<!--
-Paper Project Website Scaffold
--------------------------------
-Folder layout suggestion (place this index.html at project root):
-
-project-website/
-│
-├─ index.html          # main landing page
-├─ about.html          # optional extra page
-├─ css/
-│   └─ style.css       # main stylesheet
-├─ js/
-│   └─ main.js         # interactivity + vtk.js loader
-├─ assets/
-│   ├─ images/         # static images, figures
-│   ├─ gifs/           # segmentation gifs
-│   ├─ video/          # teaser.mp4, teaser.webm
-│   └─ data/           # nii.gz sample volumes
-└─ papers/
-    └─ paper.pdf       # link to your arXiv paper
--->
-
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation">
+  <meta name="keywords" content="Tooth Segmentation, Geometry Prior, Statistical Shape Model, Root Resorption, Wasserstein Distance">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Paper Title — Project Website</title>
-  <meta name="description" content="Project website for Paper Title (arXiv:xxxx.xxxxx).">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://unpkg.com/vtk.js"></script>
+  <title>GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation</title>
+
+  <style>
+  .hr {width: 100%; height: 1px; margin: 48px 0; background-color: #d6dbdf;}
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css"> -->
+  <!-- <link rel="stylesheet" href="./assets/css/bulma-slider.min.css"> -->
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- custom css file  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- <link rel="stylesheet" href="./assets/css/twentytwenty.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1 class="title">Paper Title</h1>
-      <p class="authors">Author A, Author B, Author C</p>
-      <div class="links">
-        <a class="btn" href="papers/paper.pdf">[Paper PDF]</a>
-        <a class="btn" href="https://arxiv.org/abs/2508.00155">[arXiv]</a>
-        <a class="btn" href="https://github.com/USERNAME/REPO">[Code]</a>
-      </div>
-      <div class="teaser">
-        <img src="assets/images/teaser.png" alt="Teaser figure">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop head">
+      <div class="columns is-centered">
+        <div class="column has-text-centered head">
+          <div class="logo">
+          <a href="index.html">
+            <!-- <img src="./assets/images/propainter_logo1" width=200px alt="Logo"> -->
+            <img src="./assets/images/gepar3d_logo_main.png" onmouseover="this.src='./assets/images/gepar3d_logo_alt.png';" onmouseout="this.src='./assets/images/gepar3d_logo_main.png';">
+          </a>
+          </div>
+          <br>
+
+          <h1 class="title is-3 publication-title"> 
+            <span class="gepar3d-title">GEPAR3D</span>: <font color="#4f7bd9">Ge</font>ometry 
+            <font color="#4f7bd9">P</font>rior-<font color="#4f7bd9">A</font>ssisted Lea<font color="#4f7bd9">r</font>ning for  <font color="#4f7bd9">3D</font> Tooth Segmentation 
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=Acs36CkAAAAJ">Tomasz Szczepański</a><sup>1</sup>,&nbsp;&nbsp;</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=g9sWRN0AAAAJ">Szymon Płotka</a><sup>1,2</sup>,&nbsp;&nbsp;</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=m0-i5G0AAAAJ">Michal K. Grzeszczyk</a><sup>1</sup>,&nbsp;&nbsp;</span> 
+            <span class="author-block">
+              <a href="https://www.znanylekarz.pl/arleta-adamowicz/stomatolog/krakow">Arleta Adamowicz</a><sup>3</sup>,&nbsp;&nbsp;</span> 
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=0OHtE8kAAAAJ">Piotr Fudalej</a><sup>3</sup>,&nbsp;&nbsp;</span> 
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=lNOtdSwAAAAJ">Przemysław Korzeniowski</a><sup>1</sup>,&nbsp;&nbsp;</span> 
+            <span class="author-block">
+              <a href="https://scholar.google.pl/citations?user=bJMRBFoAAAAJ">Tomasz Trzciński</a><sup>4,5</sup>,&nbsp;&nbsp;</span> 
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=3QheHgMAAAAJ">Arkadiusz Sitek</a><sup>6</sup></span>
+            <span class="author-block">
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Sano Centre for Computational Medicine,</span>
+            <span class="author-block"><sup>2</sup>Jagiellonian University,</span>
+            <span class="author-block"><sup>3</sup>Jagiellonian University Medical College,</span>
+            <span class="author-block"><sup>4</sup>Warsaw University of Technology,</span>
+            <span class="author-block"><sup>5</sup>Research Institute IDEAS,</span> 
+            <span class="author-block"><sup>6</sup>Harvard Medical School</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Accepted for MICCAI 2025 Daejeon, Republic of Korea</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="./xx.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2508.00155" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv (with supplement)</span>
+                </a>
+              </span>
+              <!-- Open Access Link. -->
+              <span class="link-block">
+                <a href="https://papers.miccai.org/miccai-2025/0375-Paper1833.html" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Open Access (MICCAI25)</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block"> 
+                <a href="https://github.com/tomek1911/GEPAR3D" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="https://zenodo.org/records/15739014" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                  <!-- Inline SVG -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="currentColor">
+                      <path d="M127.07722666666666 59.536a11.956799999999998 11.956799999999998 0 0 0 -2.49056 -3.6638399999999995 11.466133333333334 11.466133333333334 0 0 0 -8.127626666666666 -3.34384 11.252853333333334 11.252853333333334 0 0 0 -6.4370666666666665 1.946613333333333 11.983466666666667 11.983466666666667 0 0 0 -2.639893333333333 2.4212266666666666c-0.31999999999999995 0.39999999999999997 -0.6666666666666666 0.93328 -0.8693333333333333 1.2586133333333334a14.330079999999999 14.330079999999999 0 0 0 -1.0932266666666666 2.47456c0.032 -1.44 0.24533333333333332 -3.5838399999999995 1.09328 -4.789173333333333V45.45130666666666a2.2772266666666665 2.2772266666666665 0 0 0 -0.7306666666666667 -1.71728 2.3625599999999998 2.3625599999999998 0 0 0 -1.6905599999999998 -0.704 2.3465599999999998 2.3465599999999998 0 0 0 -1.7226133333333333 0.704 2.3465599999999998 2.3465599999999998 0 0 0 -0.6933333333333334 1.71728v9.242239999999999a12.639466666666666 12.639466666666666 0 0 0 -3.157173333333333 -1.59456 11.327466666666666 11.327466666666666 0 0 0 -7.99968 0.31999999999999995 11.519466666666666 11.519466666666666 0 0 0 -6.149066666666666 6.117066666666666l-0.128 0.31999999999999995a11.956799999999998 11.956799999999998 0 0 0 -2.613173333333333 -3.98384 11.482133333333332 11.482133333333332 0 0 0 -8.12768 -3.343893333333333 11.252853333333334 11.252853333333334 0 0 0 -4.495786666666667 0.8906666666666667 11.892800000000001 11.892800000000001 0 0 0 -3.6638399999999995 2.4532266666666667 11.23152 11.23152 0 0 0 -2.4852266666666667 3.6638399999999995l-0.12266666666666666 0.29866666666666664 -0.12266666666666666 -0.29866666666666664a11.492799999999999 11.492799999999999 0 0 0 -10.612906666666666 -7.0077333333333325c-1.6052266666666668 0 -3.10384 0.29866666666666664 -4.490453333333333 0.8906666666666667a11.892800000000001 11.892800000000001 0 0 0 -3.6585066666666664 2.4532266666666667c-1.0666666666666667 1.04528 -1.89328 2.2612266666666665 -2.49056 3.6638399999999995l-0.10666666666666666 0.2826666666666666 -0.11733333333333332 -0.2826666666666666a11.962133333333334 11.962133333333334 0 0 0 -2.49056 -3.6638933333333332 11.455466666666666 11.455466666666666 0 0 0 -8.122293333333332 -3.34384 11.252853333333334 11.252853333333334 0 0 0 -4.490506666666667 0.8906666666666667 11.887466666666665 11.887466666666665 0 0 0 -3.42384 2.2292266666666665v-0.38399999999999995a2.4692266666666667 2.4692266666666667 0 0 0 -2.463893333333333 -2.4692266666666667H2.8478933333333334a2.4692266666666667 2.4692266666666667 0 0 0 0 4.938453333333333h13.59408L0.4853333333333333 79.19919999999999a2.463893333333333 2.463893333333333 0 0 0 -0.4853333333333333 1.4666133333333333v1.61056c0 1.3653333333333333 1.1039999999999999 2.4692266666666667 2.4692266666666667 2.4692266666666667h18.3992a2.463893333333333 2.463893333333333 0 0 0 2.463893333333333 -2.2932266666666665 11.567466666666665 11.567466666666665 0 0 0 7.1837333333333335 2.5172266666666667c2.37856 0 4.50112 -0.6399999999999999 6.373013333333333 -1.9198933333333335 1.5093333333333332 -1.024 2.7038933333333333 -2.2985599999999997 3.5732266666666668 -3.8398399999999997v3.3385066666666665c0 0.6773333333333333 0.2293333333333333 1.2533333333333332 0.6933333333333334 1.71728a2.3252266666666666 2.3252266666666666 0 0 0 1.7278933333333333 0.704c0.6399999999999999 0 1.1946133333333333 -0.23466666666666663 1.6852266666666664 -0.704a2.2772266666666665 2.2772266666666665 0 0 0 0.736 -1.71728V73.9088h-0.010666666666666666l0.010666666666666666 -0.016H39.25701333333333a2.3465599999999998 2.3465599999999998 0 0 0 -2.2292799999999997 1.5306133333333334l-0.3946666666666666 0.8106666666666666a6.581066666666667 6.581066666666667 0 0 1 -2.453173333333333 2.8371733333333333 6.581066666666667 6.581066666666667 0 0 1 -3.6638399999999995 1.0506666666666666c-0.896 0 -1.7599466666666665 -0.16533333333333333 -2.58656 -0.5066666666666666a6.266399999999999 6.266399999999999 0 0 1 -2.13328 -1.44 7.370346666666666 7.370346666666666 0 0 1 -1.4398933333333332 -2.1332266666666664 6.213066666666666 6.213066666666666 0 0 1 -0.5333333333333333 -2.543893333333333v-2.1652266666666664h21.481759999999998v-7.333013333333334a6.597066666666667 6.597066666666667 0 0 1 1.94656 -4.682453333333333 6.613066666666667 6.613066666666667 0 0 1 4.746453333333333 -1.946613333333333c0.8906666666666667 0 1.7546133333333334 0.17066666666666666 2.581226666666667 0.5066666666666666 0.8266666666666667 0.3466666666666667 1.5413333333333332 0.8213333333333332 2.13328 1.44 0.5973333333333333 0.6132799999999999 1.0666133333333332 1.3278933333333334 1.4345599999999998 2.133173333333333 0.35733333333333334 0.8053333333333332 0.5439999999999999 1.6586666666666665 0.5439999999999999 2.5492266666666668v18.543253333333332c0 0.6826133333333333 0.2293333333333333 1.2586133333333334 0.6933333333333334 1.7225599999999999a2.335893333333333 2.335893333333333 0 0 0 1.7278933333333333 0.704c0.6399999999999999 0 1.1946666666666665 -0.23466666666666663 1.68528 -0.704a2.2985599999999997 2.2985599999999997 0 0 0 0.7306666666666667 -1.7226133333333333v-3.3225066666666665a11.434133333333332 11.434133333333332 0 0 0 9.962186666666666 5.749066666666666c1.5679466666666664 0 3.0612266666666668 -0.29866666666666664 4.463839999999999 -0.896 1.3972799999999999 -0.5919466666666666 2.6292266666666664 -1.4078933333333332 3.6958399999999996 -2.453173333333333a11.26352 11.26352 0 0 0 2.581226666666667 -3.9091733333333334l0.09599999999999999 0.25066666666666665c0.592 1.3972799999999999 1.4239466666666667 2.613226666666667 2.4852266666666667 3.6638399999999995 1.0666133333333332 1.04 2.28256 1.8559466666666666 3.6638399999999995 2.4532266666666667 1.3759466666666667 0.5866666666666667 2.8798399999999997 0.8906666666666667 4.495786666666667 0.8906666666666667a11.450133333333333 11.450133333333333 0 0 0 8.122346666666665 -3.343893333333333c1.0399466666666666 -1.0453333333333332 1.8718933333333334 -2.26656 2.49056 -3.6638399999999995l0.128 -0.31999999999999995 0.128 0.31999999999999995c0.6133333333333333 1.3972799999999999 1.4398933333333332 2.613226666666667 2.4852266666666667 3.6638399999999995a11.434133333333332 11.434133333333332 0 0 0 8.127626666666666 3.34384c1.5678933333333334 0 3.061173333333333 -0.29866666666666664 4.463786666666667 -0.896a11.839466666666667 11.839466666666667 0 0 0 3.6958399999999996 -2.453173333333333 11.290186666666665 11.290186666666665 0 0 0 3.38656 -8.117013333333333v-9.503573333333332a11.092853333333332 11.092853333333332 0 0 0 -0.9226666666666665 -4.463786666666667zM6.1864 79.81253333333333l12.906133333333333 -17.380586666666666c-0.064 0.512 -0.10666666666666666 1.0346666666666666 -0.10666666666666666 1.5679466666666664v9.492906666666666c0 1.5786666666666664 0.30933333333333335 3.0612266666666668 0.9279999999999999 4.469173333333333 0.2879466666666667 0.6559999999999999 0.62928 1.2746133333333334 1.0132266666666667 1.85056zm31.028 -13.332746666666667H23.828266666666668v-2.479893333333333a6.623733333333334 6.623733333333334 0 0 1 4.079893333333333 -6.117066666666666c0.8106133333333332 -0.3413333333333333 1.6798933333333332 -0.512 2.613226666666667 -0.512 0.8959466666666667 0 1.7598933333333333 0.17066666666666666 2.581226666666667 0.5066666666666666 0.8319466666666666 0.3466666666666667 1.54656 0.8213333333333332 2.1332266666666664 1.4399466666666667 0.5973333333333333 0.6133333333333333 1.0666133333333332 1.3279466666666666 1.4399466666666667 2.1332266666666664 0.3626666666666667 0.8053333333333332 0.5333333333333333 1.6586133333333333 0.5333333333333333 2.5492266666666668zm42.97418666666667 7.018346666666667a6.661066666666667 6.661066666666667 0 0 1 -6.687733333333332 6.629066666666667c-0.896 0 -1.75456 -0.17066666666666666 -2.58656 -0.512a6.229066666666666 6.229066666666666 0 0 1 -2.1332266666666664 -1.4399466666666667 7.338346666666666 7.338346666666666 0 0 1 -1.4346133333333333 -2.1332266666666664 6.181066666666666 6.181066666666666 0 0 1 -0.5333333333333333 -2.543893333333333v-9.49824a6.613066666666667 6.613066666666667 0 0 1 6.693066666666667 -6.629066666666667c0.88528 0 1.7492266666666665 0.17066666666666666 2.57056 0.5066666666666666 0.8319466666666666 0.3466666666666667 1.54656 0.8213333333333332 2.1332266666666664 1.4399466666666667 0.5973333333333333 0.6133333333333333 1.072 1.3279466666666666 1.4399466666666667 2.1332266666666664 0.35733333333333334 0.8106666666666666 0.5386666666666666 1.6586133333333333 0.5386666666666666 2.5492266666666668zm21.481759999999998 0c0 0.8906666666666667 -0.176 1.7386133333333333 -0.5333333333333333 2.5492266666666668a7.359679999999999 7.359679999999999 0 0 1 -1.44 2.13328 6.1864 6.1864 0 0 1 -2.1332266666666664 1.4398933333333332 6.719733333333332 6.719733333333332 0 0 1 -2.581173333333333 0.5013333333333333 6.5704 6.5704 0 0 1 -4.746506666666667 -1.9412266666666667 6.623733333333334 6.623733333333334 0 0 1 -1.9518933333333335 -4.682453333333333v-9.498293333333333c0 -0.8906133333333333 0.18666666666666668 -1.7385599999999999 0.5439999999999999 -2.5492266666666668a7.4663466666666665 7.4663466666666665 0 0 1 1.4398933333333332 -2.1332266666666664 6.1864 6.1864 0 0 1 2.13328 -1.4399466666666667 6.773066666666666 6.773066666666666 0 0 1 2.581226666666667 -0.5066666666666666 6.666399999999999 6.666399999999999 0 0 1 4.746453333333333 1.946613333333333 6.666399999999999 6.666399999999999 0 0 1 1.9412266666666667 4.682453333333333zm21.481706666666668 0a6.527733333333334 6.527733333333334 0 0 1 -1.9412266666666667 4.682506666666667c-0.6186666666666667 0.6186666666666667 -1.3332799999999998 1.09328 -2.1332266666666664 1.4398933333333332a6.666399999999999 6.666399999999999 0 0 1 -2.613226666666667 0.5013333333333333 6.773066666666666 6.773066666666666 0 0 1 -2.58656 -0.5066666666666666 6.234399999999999 6.234399999999999 0 0 1 -2.13328 -1.4398933333333332 7.359679999999999 7.359679999999999 0 0 1 -1.4398933333333332 -2.13328 6.170399999999999 6.170399999999999 0 0 1 -0.5333333333333333 -2.543893333333333v-9.49824a6.613066666666667 6.613066666666667 0 0 1 6.693013333333333 -6.629066666666667c0.8906666666666667 0 1.74928 0.17066666666666666 2.575893333333333 0.5066666666666666 0.832 0.3466666666666667 1.5466666666666664 0.8213333333333332 2.13328 1.44 0.5973333333333333 0.6132799999999999 1.0719466666666666 1.3278933333333334 1.4398933333333332 2.133173333333333 0.35733333333333334 0.8106666666666666 0.5333333333333333 1.6586666666666665 0.5333333333333333 2.5492266666666668v9.49296z" stroke-width="5.3333"></path>
+                  </svg>
+                </span>
+                  <!-- <span class="dataset-label">GEPAR3D dataset</span> -->
+                  <span>Dataset</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main class="container">
-    <section id="abstract">
-      <h2>Abstract</h2>
-      <p>Copy your abstract here for quick reference.</p>
-    </section>
+<section class="hero is-small">
+  <div class="container">
+    <figure>
+      <img src="assets/images/root_apices_HD_map.png" 
+           alt="Hausdorff distance heat map" />
+      <figcaption class="has-text-centered is-size-7 has-text-grey">
+      Segmenting the root apices (the tips of roots) is critical to assess root resorption accurately because the apical
+      region is where much of the initial and most clinically significant loss of tissue occurs; without precise delineation
+      of the apex, volumetric measures of resorption will be biased, underestimating damage.
+      However existing methods struggle to segment them accurately due to their small size and complex morphology.
+      The heatmap above shows the surface Hausdorff Distance (HD) between ground truth and predicted segmentation for three
+      methods:
+      GEPAR3D (ours), ToothSeg, and SGANET. The HD is a measure of the maximum distance between the surfaces of the two
+      segmentations, with lower values indicating better accuracy.
+      The heatmap highlights that GEPAR3D achieves significantly lower HD values at the root apices compared to the other
+      methods, demonstrating its superior ability to capture these fine structures accurately.
+      Surface Hausdorff Distance heatmaps overlaid on GT labels (green = low, purple = high) highlight apex deviations.
+      GEPAR3D shows superior root sensitivity versus tooth-specific baselines. Missing teeth are shown in gray.</figcaption>
+    </figure>
+  </div>
+</section>
 
-    <section id="method">
-      <h2>Method</h2>
-      <img src="assets/images/method.png" alt="Method figure">
-      <p>Short description of your method, referencing the figure.</p>
-    </section>
+<!-- 3D VTK SECTION -->
 
-    <section id="results">
-      <h2>Results</h2>
-      <div class="gallery">
-        <img src="assets/gifs/result1.gif" alt="Segmentation result 1">
-        <img src="assets/gifs/result2.gif" alt="Segmentation result 2">
+<section style="display:flex; flex-direction:column; align-items:center; margin-top: 60px; margin-bottom: 20px;">
+  <div id="vtk-frame" style="
+      position: relative;
+      box-shadow: 0 0 30px rgba(79,123,217,0.7);
+      border: #4f7bd9 2px solid;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      gap: 15px;
+    ">
+    <div id="vtk-container-1"></div>
+    <div id="vtk-container-2"></div>
+  </div>
+
+  <!-- Description below the frame -->
+  <div class="content has-text-centered" style="margin-top: 10px; max-width: 800px;">
+    <p><strong>VTK viewer:</strong> Side-by-side 3D renderings of sample volumes, illustrating segmentation results obtained
+      using the <span class="gepar3d-word">GEPAR3D</span> method. Left and right panels correspond to external datasets from
+      Centers A and B, respectively. <small>(Rotate volumes: left mouse button; Move volumes: Shift + left mouse
+        button.)</small></p>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <!-- <div class="column"> -->
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Tooth segmentation in Cone-Beam Computed Tomography (CBCT) remains challenging, especially for fine structures like root
+          apices, which is critical for assessing root resorption in orthodontics. We introduce GEPAR3D, a novel approach that
+          unifies instance detection and multi-class segmentation into a single step tailored to improve root segmentation. Our
+          method integrates a Statistical Shape Model of dentition as a geometric prior, capturing anatomical context and
+          morphological consistency without enforcing restrictive adjacency constraints. We leverage a deep watershed method,
+          modeling each tooth as a continuous 3D energy basin encoding voxel distances to boundaries. This instance-aware
+          representation ensures accurate segmentation of narrow, complex root apices. Trained on publicly available CBCT scans
+          from a single center, our method is evaluated on external test sets from two in-house and two public medical centers.
+          <span class="gepar3d-word">GEPAR3D</span> achieves the highest overall segmentation performance, averaging a Dice Similarity Coefficient (DSC) of 95.0%
+          (+2.8% over the second-best method) and increasing recall to 95.2% (+9.5%) across all test sets. Qualitative analyses
+          demonstrated substantial improvements in root segmentation quality, indicating significant potential for more accurate
+          root resorption assessment and enhanced clinical decision-making in orthodontics.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
 
-    <section id="viewer">
-      <h2>Interactive Viewer</h2>
-      <div id="vtk-container" class="vtk-viewer"></div>
-      <p class="muted">Interactive 3D segmentation preview using vtk.js.</p>
-    </section>
+<section class="hero is-small">
+    <div class="container">
+      <img src="assets/images/GEPAR3D_overview.png" alt="GEPAR3D method overview"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        An overview of <span class="gepar3d-word">GEPAR3D</span>, which unifies instance detection and multi-class segmentation for precise tooth root
+        segmentation. (a) Crops the region of interest (ROI)
+        during inference. (b) Simultaneously performs multi-class segmentation and instance
+        regression. (c) Regularizes segmentation loss Lseg with a geometric prior from an SSM
+        of normal dentition by Kim et al. (2023). (d) Uses instance regression task LEDT to generate energy
+        maps for the Deep Watershed Algorithm. (e) Captures complex root apex geometries
+        via Energy Direction loss Ldir. Finally, (f) assigns each detected instance a class via
+        majority voting based on segmentation outputs.
+        </figcaption>
+      </div>
+</section>
 
-    <section id="citation">
-      <h2>Citation</h2>
-      <pre><code>@article{your2025paper,
-  title={Paper Title},
-  author={Author, A. and Author, B. and Author, C.},
-  journal={arXiv preprint arXiv:2508.00155},
-  year={2025}
-}</code></pre>
-    </section>
-  </main>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            <span class="gepar3d-word">GEPAR3D</span> is an encoder-decoder model with dual decoders for multi-class segmentation and instance regression. The
+            segmentation branch classifies 32 tooth categories with Statistical Shape Model (SSM)-based regularization, while the
+            regression
+            branch models instances as energy basins guided by energy descent, where we adapt Deep Watershed method for 3D. Each
+            detected instance receives class votes from the multi-class segmentation branch, and the final instance segmentation is
+            obtained via a voting scheme. The SSM is built from a representative patient cohort, this 3D atlas encodes anatomical
+            knowledge. By processing the SSM, we extract inter-tooth distances for morphologically guided segmentation, capturing
+            anatomical
+            context and morphological consistency without enforcing restrictive adjacency constraints. This integration of geometric
+            priors and instance-aware representation ensures accurate segmentation of narrow, complex
+            root apices.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 Authors. Built with HTML/CSS/JS. Hosted on GitHub Pages.</p>
-  </footer>
 
-  <script src="js/main.js"></script>
+<section class="hero is-small">
+    <div class="container">
+      <img src="assets/images/resorption.png" alt="resorption" class="width_scale_img"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        Index for quantitative assessment of apical root resorption (1: irregular root contour; 2: resorption &lt; 2 mm of the
+        original root length; 3: resorption 2 mm to <sup>1</sup>/<sub>3</sub> of the original root length; 4: resorption &gt;
+        <sup>1</sup>/<sub>3</sub> of the original root length). Malmgren et al. (1982) developed this index to classify the severity
+        of root resorption based on radiographic appearance.
+        </figcaption>
+      </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Geometry Prior - Wasserstein Loss </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small mb-6">
+    <div class="container">
+      <img src="assets/images/wasserstein_3d_cbct_v2.png" alt="Wasserstein optimal transport weights" class="width_scale_img_75"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        Intermediate step in the computation of the Wasserstein loss, where penalties
+        are assigned to each class based on the Wasserstein distance from a designated reference
+        tooth. A 3D heatmap visualization, overlaid on the segmentation GT label, is shown
+        for two different reference teeth (indicated by arrows and gray overlays). The highest
+        misclassification penalties correspond to teeth that are both morphologically dissimilar
+        and spatially distant from the reference.
+        </figcaption>
+      </div>
+</section>
+
+<section class="hero is-small mb-6">
+    <div class="container">
+      <img src="assets/images/wasserstein_matrix_ssm.png" alt="Wasserstein matrix weights" class="width_scale_img_75"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        Geometrical Wasserstein Distance (GWD) loss - Wasserstein matrix based
+        on geometrical and morphological priors. The colormap displays penalty values normalized to 1, with red indicating the
+        highest penalty. In addition to the main diagonal,
+        perpendicular valleys of low penalties can be observed. They correspond to directly adjacent teeth in the opposite arch
+        or are located symmetrically within the same dental
+        arch. The former are larger due to greater morphological differences.
+        </figcaption>
+      </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Morphology Aware Deep Watershed 3D</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small mb-6">
+    <div class="container">
+      <img src="assets/images/direction_xyz.png" alt="direction map" class="width_scale_img_75"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+      Energy direction and energy map sections reveal rapid angular transitions in the vector field around anatomically
+      intricate regions. This is especially pronounced at the root
+      apices, where fine, tapering structures curve sharply and diverge from neighboring bone. The directional vector field
+      exhibits high angular gradients in these
+      areas, reflecting the need for fine-grained vector guidance to avoid root-level in-
+      GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation 23
+      stance fusion. Similarly, the bite area, specifically in the z component representing superior-inferior direction, shows
+      abrupt vector shifts due to the vertical
+      overlap of opposing arches in occlusion. These steep gradients are critical for
+      disambiguating closely apposed crowns from opposing jaws, enabling accurate
+      watershed ridge formation along occlusal interfaces. This capacity to encode
+      fast angular variation is essential for resolving complex 3D topologies in tight
+      anatomical configurations.
+        </figcaption>
+      </div>
+</section>
+
+<section class="hero is-small mb-6">
+    <div class="container">
+      <img src="assets/images/energy_map_3d.png" alt="energy map" class="width_scale_img_75"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        Energy map in the axial (xy) plane. A representative slice from the 3D
+        scan is shown, selected near the contact points where adjacent tooth crowns exhibit
+        close anatomical proximity. This region, characterized by broad interproximal contact
+        and parallel axial walls, presents a challenging condition for separating anatomically
+        congruent and tangentially aligned teeth. The energy map highlights the <span class="gepar3d-word">GEPAR3D</span> ability
+        to resolve individual instances despite the absence of clear interproximal gaps or distinct
+        morphological transitions between adjacent crowns.
+        </figcaption>
+      </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small mb-6">
+    <div class="container">
+      <img src="assets/images/HD_table_supplement_v2.png" alt="Hausdorff heatmap roots"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        More qualitative comparisons of GEPAR3D with Surface Hausdorff Distance
+        heatmaps overlaid on GT labels (green = low, purple = high) highlight apex deviations.
+        GEPAR3D shows superior root sensitivity versus tooth-specific baselines. Missing teeth
+        are shown in gray.
+        </figcaption>
+      </div>
+</section>
+
+<section class="hero is-small mb-6">
+    <div class="container">
+      <img src="assets/images/american_notation_example.png" alt="dental notation color map" class="width_scale_img_75"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        The Universal Numbering System, also called the American System. Tooth
+        number 1 is the maxillary right third molar, with the count progressing along the upper
+        arch to the left side. The numbering then resumes at the mandibular left third molar,
+        number 17, continuing along the lower teeth to the right side.
+        </figcaption>
+      </div>
+</section>
+
+<section class="hero is-small mb-6">
+    <div class="container">
+      <img src="assets/images/Qualitative_RAW_GT_2.png" alt="Hausdorff heatmap roots"/>
+        <figcaption class="has-text-centered is-size-7 has-text-grey"> 
+        Qualitative comparisons of segmentation on external test sets. We present the raw 32-class segmentation results.
+        </figcaption>
+      </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@InProceedings{Szczepanski2025MICCAI_GEPAR3D,
+        author = { Szczepański, Tomasz and Płotka, Szymon and Grzeszczyk, Michal K. and Adamowicz, Arleta and Fudalej, Piotr and Korzeniowski, Przemysław and Trzciński, Tomasz and Sitek, Arkadiusz},
+        title = { { GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation } },
+        booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2025},
+        year = {2025},
+        publisher = {Springer Nature Switzerland},
+        volume = {LNCS 15961},
+        month = {September},
+        page = {216 -- 226}
+}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/abs/2508.00155" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/tomek1911/GEPAR3D" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a class="icon-link" href="https://zenodo.org/records/15739014" target="_blank">
+        <img src="./assets/images/zenodo.png">
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <div class="columns is-centered"><p>
+            Some fragments of this website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">here</a> and <a href="https://shangchenzhou.com/projects/ProPainter/" target="_blank">there</a>. 
+            Feel free to clone this website's <a href="https://github.com/tomek1911/GEPAR3D/tree/website" target="_blank">source code</a>.
+            Thank you!
+          </p></div>
+        </div>
+      </div>
+    </div>
+
+    <!--=================Visitor==========================-->
+    <!-- <div class="content has-text-centered" style="padding:0 0 0 0">
+      <img src='https://api.infinitescript.com/badgen/count?name=sczhou/ProPainter&ltext=Visitors&color=3977dd' alt='visitors'>
+    </div> -->
+
+  </div>
+</footer>
+
+  <!-- custom js file  -->
+  <!-- <script defer src="./assets/js/fontawesome.all.min.js"></script> -->
+  <!-- <script src="./assets/js/bulma-carousel.min.js"></script> -->
+  <!-- <script src="./assets/js/bulma-slider.min.js"></script> -->
+  <!-- <script src="./assets/js/index.js"></script> -->
+  <!-- <script src="./assets/js/jquery.event.move.js"></script> -->
+  <!-- <script src="./assets/js/jquery.twentytwenty.js"></script> -->
+  <!-- <script>
+  $(function(){
+    $(".twentytwenty-container").twentytwenty();
+    // $(".twentytwenty-container", "#results-carousel").twentytwenty({default_offset_pct: 0.5, ratio: 0.5});
+  });
+  </script> -->
+  
+  <!-- Include vtk.js UMD bundle -->
+  <script src="./assets/js/vtk-dist/dist/umd/vtk-lite.js"></script>
+  <script src="./assets/js/vtk-viewer.js"></script>
+
+  <script>
+    initVTKViewer('#vtk-container-1', 'assets/data/VTK_data/GEPAR3D/scan_1_centerA.vtp');
+    initVTKViewer('#vtk-container-2', 'assets/data/VTK_data/GEPAR3D/scan_2_centerB.vtp');
+  </script>
+  
+
 </body>
 </html>
