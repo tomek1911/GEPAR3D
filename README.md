@@ -1,6 +1,6 @@
 # GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation
 
-[![arXiv](https://img.shields.io/badge/arXiv-2508.00155-red)](https://arxiv.org/pdf/2508.00155)  [![ProjectPage](https://img.shields.io/badge/Website-GEPAR3D.github.io-blue)](https://tomek1911.github.io/GEPAR3D/) [![Dataset](https://img.shields.io/badge/Dataset-GEPAR3D%20Zenodo-green)](https://zenodo.org/records/15739014) [![Assets](https://img.shields.io/badge/Assets-Google%20Drive-yellow)](https://drive.google.com/drive/folders/1CqqLdaJSA9bT1whKnUvPfax654psx9YE?usp=drive_link)
+[![arXiv](https://img.shields.io/badge/arXiv-2508.00155-red)](https://arxiv.org/pdf/2508.00155)  [![ProjectPage](https://img.shields.io/badge/Website-GEPAR3D.github.io-blue)](https://tomek1911.github.io/GEPAR3D/) [![Dataset](https://img.shields.io/badge/Dataset-GEPAR3D%20Zenodo-green)](https://zenodo.org/records/15739014) [![Assets](https://img.shields.io/badge/Assets-Google%20Drive-yellow)](https://drive.google.com/drive/folders/1CqqLdaJSA9bT1whKnUvPfax654psx9YE?usp=drive_link) [![MICCAI](https://img.shields.io/badge/MICCAI-Open%20Access-purple)](https://papers.miccai.org/miccai-2025/0375-Paper1833.html)
 
 This is the official code for "GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation" accepted for the 28th International Conference on Medical Image Computing and Computer Assisted Intervention - MICCAI 2025, Daenjeong Korea.
 
