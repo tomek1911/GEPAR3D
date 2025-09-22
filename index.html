@@ -166,32 +166,6 @@
   </div>
 </section>
 
-<!-- 3D VTK SECTION -->
-
-<section style="display:flex; flex-direction:column; align-items:center; margin-top: 60px; margin-bottom: 20px;">
-  <div id="vtk-frame" style="
-      position: relative;
-      box-shadow: 0 0 30px rgba(79,123,217,0.7);
-      border: #4f7bd9 2px solid;
-      border-radius: 10px;
-      padding: 10px;
-      display: flex;
-      gap: 15px;
-    ">
-    <div id="vtk-container-1"></div>
-    <div id="vtk-container-2"></div>
-  </div>
-
-  <!-- Description below the frame -->
-  <div class="content has-text-centered" style="margin-top: 10px; max-width: 800px;">
-    <p><strong>VTK viewer:</strong> Side-by-side 3D renderings of sample volumes, illustrating segmentation results obtained
-      using the <span class="gepar3d-word">GEPAR3D</span> method. Left and right panels correspond to external datasets from
-      Centers A and B, respectively. <small>(Rotate volumes: left mouse button; Move volumes: Shift + left mouse
-        button.)</small></p>
-  </div>
-</section>
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -221,7 +195,85 @@
   </div>
 </section>
 
+
+<!-- 3D VTK SECTION -->
+<!--  SEGMENTATION OUTPUT  -->
+<section style="display:flex; flex-direction:column; align-items:center; margin-top: 60px; margin-bottom: 20px;">
+  <h2 class="title is-3">3D Segmentations Results</h2>
+  <div id="vtk-frame" style="
+      position: relative;
+      box-shadow: 0 0 30px rgba(79,123,217,0.7);
+      border: #4f7bd9 2px solid;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      gap: 15px;
+    ">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div id="vtk-container-1"></div>
+      <div style="margin-top: 8px; text-align: center;"><span class="gepar3d-word">GEPAR3D</span> </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div id="vtk-container-2"></div>
+      <div style="margin-top: 8px; text-align: center;">SGANet</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div id="vtk-container-3"></div>
+      <div style="margin-top: 8px; text-align: center;">ToothSeg</div>
+    </div>
+  </div>
+
+  </div>
+  <!-- Description below the frame -->
+  <div class="content has-text-centered" style="margin-top: 10px; max-width: 80%; margin-left: auto; margin-right: auto;">
+    <p>Interactive side-by-side 3D renderings of sample segmentations.</p> 
+    <p><small>(Rotate volumes: left mouse button; Move volumes: Shift + left mouse button.)</small></p>
+  </div>
+</section>
+
+<!--  HEAT MAP WITH SURFACE ERROR  -->
+
+<section style="display:flex; flex-direction:column; align-items:center; margin-top: 60px; margin-bottom: 60px;">
+  <div id="vtk-frame" style="
+      position: relative;
+      box-shadow: 0 0 30px rgba(79,123,217,0.7);
+      border: #4f7bd9 2px solid;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      gap: 15px;
+    ">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <div id="vtk-container-4"></div>
+    <div style="margin-top: 8px; text-align: center;"><span class="gepar3d-word">GEPAR3D</span> </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <div id="vtk-container-5"></div>
+    <div style="margin-top: 8px; text-align: center;">SGANet</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <div id="vtk-container-6"></div>
+    <div style="margin-top: 8px; text-align: center;">ToothSeg</div>
+  </div>
+
+  </div>
+  <!-- Description below the frame -->
+  <div class="content has-text-centered" style="margin-top: 10px; max-width: 80%; margin-left: auto; margin-right: auto;">
+    <p>Interactive 3D Surface Hausdorff Distance heatmaps overlaid on GT labels (green = low, purple = high error) highlight
+      apex deviations. Presented maps correspond to segmentation results shown above. <span class="gepar3d-word">GEPAR3D</span> shows superior root sensitivity versus tooth-specific
+      baselines. Missing teeth are shown in gray.</p>
+  </div>
+</section>
+
+
 <section class="hero is-small">
+    <div class="container has-text-centered is-centered", style="margin-top: 50px; margin-bottom: 40px;">
+      <h2 class="title is-3">Method</h2>
+    </div>
     <div class="container">
       <img src="assets/images/GEPAR3D_overview.png" alt="GEPAR3D method overview"/>
         <figcaption class="has-text-centered is-size-7 has-text-grey"> 
@@ -242,7 +294,6 @@
     <div class="columns is-centered has-text-centered">
       <!-- <div class="column is-four-fifths"> -->
       <div class="column">
-        <h2 class="title is-3">Method</h2>
         <div class="content has-text-justified">
           <p>
             <span class="gepar3d-word">GEPAR3D</span> is an encoder-decoder model with dual decoders for multi-class segmentation and instance regression. The
@@ -375,10 +426,8 @@
     <div class="container">
       <img src="assets/images/HD_table_supplement_v2.png" alt="Hausdorff heatmap roots"/>
         <figcaption class="has-text-centered is-size-7 has-text-grey"> 
-        More qualitative comparisons of GEPAR3D with Surface Hausdorff Distance
-        heatmaps overlaid on GT labels (green = low, purple = high) highlight apex deviations.
-        GEPAR3D shows superior root sensitivity versus tooth-specific baselines. Missing teeth
-        are shown in gray.
+        More qualitative comparisons of GEPAR3D with Surface Hausdorff Distance heatmaps overlaid on GT labels highlight apex deviations (green = low, purple = high error).
+        GEPAR3D shows superior root sensitivity versus tooth-specific baselines. Missing teeth are shown in gray.
         </figcaption>
       </div>
 </section>
@@ -476,10 +525,15 @@
   <script src="./assets/js/vtk-viewer.js"></script>
 
   <script>
-    initVTKViewer('#vtk-container-1', 'assets/data/VTK_data/GEPAR3D/scan_1_centerA.vtp');
-    initVTKViewer('#vtk-container-2', 'assets/data/VTK_data/GEPAR3D/scan_2_centerB.vtp');
+    initVTKViewer('#vtk-container-1', 'assets/data/VTK_data/GEPAR3D/A.vtp', 'discrete', 0.25);
+    initVTKViewer('#vtk-container-2', 'assets/data/VTK_data/SGANET/A.vtp', 'discrete',  0.25);
+    initVTKViewer('#vtk-container-3', 'assets/data/VTK_data/TOOTHSEG/A.vtp', 'discrete', 0.25);
+
+    initVTKViewer('#vtk-container-4', 'assets/data/VTK_data/error_maps/GEPAR3D/A.vtp', 'continuous', 0.25);
+    initVTKViewer('#vtk-container-5', 'assets/data/VTK_data/error_maps/SGANET/A.vtp', 'continuous', 0.25);
+    initVTKViewer('#vtk-container-6', 'assets/data/VTK_data/error_maps/TOOTHSEG/A.vtp', 'continuous', 0.25);
   </script>
   
 
 </body>
-</html>
+</html>s

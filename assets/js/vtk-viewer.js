@@ -1,11 +1,11 @@
 // assets/js/vtk-viewer.js
 
-function initVTKViewer(containerId, vtpFile) {
+function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWidth = 0.33) {
   window.requestAnimationFrame(() => {
     const container = document.querySelector(containerId);
 
     // Set container size
-    const width = window.innerWidth * 0.33;
+    const width = window.innerWidth * windowViewWidth;
     container.style.width = `${width}px`;
     container.style.height = `${width}px`;
 
@@ -36,6 +36,7 @@ function initVTKViewer(containerId, vtpFile) {
           const lut = vtk.Rendering.Core.vtkColorTransferFunction.newInstance();
 
           // Load colormap and build LUT
+          if (scalarType === 'discrete') {
           fetch('assets/data/colormap.txt')
             .then(res => res.text())
             .then(text => {
@@ -56,6 +57,46 @@ function initVTKViewer(containerId, vtpFile) {
 
               renderWindow.render();
             });
+          }
+          else if (scalarType === 'continuous')
+          {
+          // Helper: convert hex to [r,g,b,a] in 0–1
+          function hexToRgba01(hex, alpha=1.0) {
+            const bigint = parseInt(hex.slice(1), 16);
+            const r = ((bigint >> 16) & 255) / 255.0;
+            const g = ((bigint >> 8) & 255) / 255.0;
+            const b = (bigint & 255) / 255.0;
+            return [r, g, b, alpha];
+          }
+          const lut = vtk.Rendering.Core.vtkColorTransferFunction.newInstance();
+
+          lut.setNanColor(0.5, 0.5, 0.5, 1.0);
+          lut.setBelowRangeColor(hexToRgba01("#82cc12"));
+          lut.setAboveRangeColor(hexToRgba01("#c05eeb"));
+          lut.setUseBelowRangeColor(true);
+          lut.setUseAboveRangeColor(true);
+
+            // Define cvals and hex colors
+            const cvals = [1.5, 2, 3, 4, 5, 5.5];
+            const colors = ["#a1cc12", "#faf561", "#fadf69", "#fa9e61", "#f75757", "#c05eeb"];
+
+            // Add color points
+            cvals.forEach((val, i) => {
+              const [r, g, b, a] = hexToRgba01(colors[i]);
+              lut.addRGBPoint(val, r, g, b);
+            });
+
+            // Apply LUT and mapper settings
+            mapper.setLookupTable(lut);
+            mapper.setColorModeToMapScalars();
+            mapper.setScalarModeToUsePointData();
+            mapper.setScalarVisibility(true);
+
+            // Scalar range should match your cvals domain
+            mapper.setScalarRange(0.4, 2.0);
+
+            renderWindow.render();
+          }
         }
 
         const actor = vtk.Rendering.Core.vtkActor.newInstance();
