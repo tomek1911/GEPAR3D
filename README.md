@@ -71,3 +71,20 @@ To train the model, follow these steps:
 #### Inference
 
 To run inference, one can use the provided checkpoints or train them oneself. To run full pipeline leverage ROI binary segmentation and multi-class GEPAR3D method: ```scripts/ablation_study/inference.py```.
+
+
+### Citation
+If you find this work useful, please cite:
+
+```bibtex
+@InProceedings{Szczepanski2025MICCAI_GEPAR3D,
+        author = { Szczepański, Tomasz and Płotka, Szymon and Grzeszczyk, Michal K. and Adamowicz, Arleta and Fudalej, Piotr and Korzeniowski, Przemysław and Trzciński, Tomasz and Sitek, Arkadiusz},
+        title = { { GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation } },
+        booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2025},
+        year = {2025},
+        publisher = {Springer Nature Switzerland},
+        volume = {LNCS 15961},
+        month = {September},
+        page = {216 -- 226}
+}
+```
