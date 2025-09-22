@@ -61,12 +61,12 @@ function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWi
           else if (scalarType === 'continuous')
           {
           // Helper: convert hex to [r,g,b] in 0–1
-          function hexToRgb01(hex) {
+          function hexToRgb01(hex, alpha=1.0) {
             const bigint = parseInt(hex.slice(1), 16);
             const r = ((bigint >> 16) & 255) / 255.0;
             const g = ((bigint >> 8) & 255) / 255.0;
             const b = (bigint & 255) / 255.0;
-            return [r, g, b];
+            return [r, g, b, alpha];
           }
           const lut = vtk.Rendering.Core.vtkColorTransferFunction.newInstance();
 
@@ -82,7 +82,7 @@ function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWi
 
             // Add color points
             cvals.forEach((val, i) => {
-              const [r, g, b] = hexToRgb01(colors[i]);
+              const [r, g, b, a] = hexToRgb01(colors[i]);
               lut.addRGBPoint(val, r, g, b);
             });
 
