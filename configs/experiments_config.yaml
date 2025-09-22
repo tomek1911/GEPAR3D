@@ -10,7 +10,6 @@ general_segmentation_methods:
     - SwinUNETRv2
     - SwinSMT
     - VSmTrans
-    - SegMamba
 
   update_config:
     general:
@@ -51,8 +50,8 @@ general_segmentation_methods:
 gepar3d_ablation_study:
   experiments:
     - DWCE #ResUNet34: Dice + Weighted Cross-Entropy
-    - DWCE_EDT #deep watershed
-    - DWCE_EDT_DIR # #deep watershed
+    - DWCE_EDT #Deep watershed: Energy Map 
+    - DWCE_EDT_DIR # #Deep watershed: Energy Map + Direction Map
 
   update_config:
     general:
@@ -63,7 +62,7 @@ gepar3d_ablation_study:
       seg_loss_name: WCE_GWD #WCE_DICE
       dice_loss_type: gwd
       wasserstein_config: geom_prior
-      background_penalty: 2.0
+      background_penalty: 2.0 # missclassification penalty: tooth class as background
       background_penalty_FP: 0.0
       background_penalty_FN: 0.0
       is_normalize_wsm: True

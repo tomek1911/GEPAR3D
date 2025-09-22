@@ -1,4 +1,3 @@
-import sys
 import os
 import yaml
 import json
@@ -37,19 +36,15 @@ import glob
 import numpy as np
 import torch
 import torch.nn as nn
-import nibabel as nib
-import pandas as pd
 import warnings
-import itertools
 
 from tqdm import tqdm
 from PIL import Image, ImageDraw, ImageFont
 from natsort import natsorted
-from torch.utils.data import SubsetRandomSampler
-from monai.data import Dataset, decollate_batch, DataLoader
+from monai.data import DataLoader
 from monai.data.dataset import PersistentDataset
 from monai.inferers import sliding_window_inference
-from monai.metrics import (HausdorffDistanceMetric, SurfaceDistanceMetric, MeanIoU, DiceMetric)
+from monai.metrics import (HausdorffDistanceMetric, SurfaceDistanceMetric, DiceMetric)
 from monai.networks.utils import one_hot
 from monai.transforms import Compose
 from monai.transforms import (
@@ -66,10 +61,8 @@ from monai.transforms import (
 )
 from monai.transforms import (
     Compose,
-    AsDiscrete,
-    Activations
+    AsDiscrete
 )
-
 
 
 from src.models.gepar3d import GEPAR3D
@@ -77,6 +70,7 @@ from src.commons.log_image import Logger
 from src.watershed_ablation import deep_watershed_with_voting
 from inference_utils import load_coarse_binary_model, detect_roi
 from src.utils import save_nifti
+
 #CUDA
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 torch.backends.cudnn.benchmark = False
@@ -124,7 +118,7 @@ dataset = "centers"
 
 if dataset == "centers":
     data_dir = 'data/test_data'
-    centers = 'ABCD'
+    centers = 'ABCD' #AB - GEPAR3D dataset, C - Z.Cui et al. dataset, D - ToothFairy2
     nifti_paths_scans_A = natsorted(glob.glob(os.path.join(data_dir, 'scans', 'centerA', '*.nii.gz')))
     nifti_paths_labels_A = natsorted(glob.glob(os.path.join(data_dir, 'labels', 'centerA', '*.nii.gz')))
     nifti_paths_scans_B = natsorted(glob.glob(os.path.join(data_dir, 'scans', 'centerB', '*.nii.gz')))

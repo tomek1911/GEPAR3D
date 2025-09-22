@@ -1,0 +1,6 @@
+Download checkpoints and other assets:
+- binary segmentation coarse unet weights
+- GEPAR3D model weights
+- class weights - training dataset
+- wasserstein matrix - SSM-based penalties
+FROM: https://drive.google.com/drive/folders/1CqqLdaJSA9bT1whKnUvPfax654psx9YE?usp=sharing
