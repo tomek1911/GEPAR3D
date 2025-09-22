@@ -22,7 +22,7 @@ We present intermediate step in the computation of the Wasserstein loss, where p
 ![GWD Loss Computation](images/wasserstein_loss.png)
 ![Wasserstein Matrix](images/wasserstein_matrix_ssm.png)
 
-## We adapt 3D Deep Watershed towards stronger morpogological inductive bias - morphology-informed energy learning in 3D.
+## We adapt 3D Deep Watershed towards stronger morpogological inductive bias - morphology-informed energy learning in 3D
 We present Energy Map in the axial (xy) plane. A representative slice from the 3D scan is shown, selected near the contact points where adjacent tooth crowns exhibit close anatomical proximity. This region, characterized by broad interproximal contact and parallel axial walls, presents a challenging condition for separating anatomically congruent and tangentially aligned teeth. The energy map highlights the model’s ability to resolve individual instances despite the absence of clear interproximal gaps or distinct morphological transitions between adjacent crowns. 
 
 ![Energy Map and Direction Map](images/direction_xyz.png)
