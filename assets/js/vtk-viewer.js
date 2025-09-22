@@ -60,19 +60,19 @@ function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWi
           }
           else if (scalarType === 'continuous')
           {
-          // Helper: convert hex to [r,g,b,a] in 0–1
-          function hexToRgba01(hex, alpha=1.0) {
+          // Helper: convert hex to [r,g,b] in 0–1
+          function hexToRgb01(hex) {
             const bigint = parseInt(hex.slice(1), 16);
             const r = ((bigint >> 16) & 255) / 255.0;
             const g = ((bigint >> 8) & 255) / 255.0;
             const b = (bigint & 255) / 255.0;
-            return [r, g, b, alpha];
+            return [r, g, b];
           }
           const lut = vtk.Rendering.Core.vtkColorTransferFunction.newInstance();
 
-          lut.setNanColor(0.5, 0.5, 0.5, 1.0);
-          lut.setBelowRangeColor(hexToRgba01("#82cc12"));
-          lut.setAboveRangeColor(hexToRgba01("#c05eeb"));
+          lut.setNanColor(0.5, 0.5, 0.5);
+          lut.setBelowRangeColor(hexToRgb01("#82cc12"));
+          lut.setAboveRangeColor(hexToRgb01("#c05eeb"));
           lut.setUseBelowRangeColor(true);
           lut.setUseAboveRangeColor(true);
 
@@ -82,7 +82,7 @@ function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWi
 
             // Add color points
             cvals.forEach((val, i) => {
-              const [r, g, b, a] = hexToRgba01(colors[i]);
+              const [r, g, b] = hexToRgb01(colors[i]);
               lut.addRGBPoint(val, r, g, b);
             });
 
