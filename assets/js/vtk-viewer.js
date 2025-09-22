@@ -70,7 +70,7 @@ function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWi
           }
           const lut = vtk.Rendering.Core.vtkColorTransferFunction.newInstance();
 
-          lut.setNanColor(0.5, 0.5, 0.5);
+          lut.setNanColor(0.5, 0.5, 0.5, 1.0);
           lut.setBelowRangeColor(hexToRgb01("#82cc12"));
           lut.setAboveRangeColor(hexToRgb01("#c05eeb"));
           lut.setUseBelowRangeColor(true);
