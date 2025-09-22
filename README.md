@@ -2,8 +2,8 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-2508.00155-red)](https://arxiv.org/pdf/2508.00155)  [![ProjectPage](https://img.shields.io/badge/Website-GEPAR3D.github.io-blue)](https://tomek1911.github.io/GEPAR3D/) [![Dataset](https://img.shields.io/badge/Dataset-GEPAR3D%20Zenodo-green)](https://zenodo.org/records/15739014) [![Assets](https://img.shields.io/badge/Assets-Google%20Drive-yellow)](https://drive.google.com/drive/folders/1CqqLdaJSA9bT1whKnUvPfax654psx9YE?usp=drive_link) [![MICCAI](https://img.shields.io/badge/MICCAI-Open%20Access-purple)](https://papers.miccai.org/miccai-2025/0375-Paper1833.html)
 
-This is the official code for "GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation" accepted for the 28th International Conference on Medical Image Computing and Computer Assisted Intervention - MICCAI 2025, Daenjeong Korea.
-
+This is the official code for "GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation" accepted for the 28th International Conference on Medical Image Computing and Computer Assisted Intervention - MICCAI 2025, Daejeon, Republic of Korea.
+s
 ---
 
 
@@ -17,9 +17,7 @@ Existing methods struggle to segment accurately root apices, crucial for toot re
 ![HD error heatmap](images/HDerror.png)
 
 ## We leverage geometric prioir based on Satistical Shape Model of normal dentition
-We present intermediate step in the computation of the Wasserstein loss, where penalties are assigned to each class based on the Wasserstein distance from a designated reference
-tooth. A 3D heatmap visualization, overlaid on the segmentation GT label, is shown for two different reference teeth (indicated by arrows and gray overlays). The highest
-misclassification penalties correspond to teeth that are both morphologically dissimilar and spatially distant from the reference.
+We present intermediate step in the computation of the Wasserstein loss, where penalties are assigned to each class based on the Wasserstein distance from a designated references tooth. A 3D heatmap visualization, overlaid on the segmentation GT label, is shown for two different reference teeth (indicated by arrows and gray overlays). The highest misclassification penalties correspond to teeth that are both morphologically dissimilar and spatially distant from the reference.
 
 ![GWD Loss Computation](images/wasserstein_loss.png)
 ![Wasserstein Matrix](images/wasserstein_matrix_ssm.png)
