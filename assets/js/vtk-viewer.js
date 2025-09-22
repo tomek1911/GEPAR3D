@@ -1,6 +1,6 @@
 // assets/js/vtk-viewer.js
 
-function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWidth = 0.33) {
+function initVTKViewer(containerId, vtpFile, scalarType='discrete', windowViewWidth = 0.25) {
   window.requestAnimationFrame(() => {
     const container = document.querySelector(containerId);
 
