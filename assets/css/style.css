@@ -18,6 +18,37 @@ display: block;
 margin: 0 auto;
 }
 
+/*  */
+.bullet-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  min-height: 24px; /* ensures container has height */
+}
+
+.bullet {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;  /* needed to respect width/height */
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.bullet.active {
+  width: 20px;
+  height: 20px;
+  background-color: #555;
+  border-color: #333;
+}
+/*  */
+
 .gepar3d-word {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
