@@ -76,14 +76,12 @@ To run inference, one can use the provided checkpoints or train them oneself. To
 If you find this work useful, please cite:
 
 ```bibtex
-@InProceedings{Szczepanski2025MICCAI_GEPAR3D,
-        author = { Szczepański, Tomasz and Płotka, Szymon and Grzeszczyk, Michal K. and Adamowicz, Arleta and Fudalej, Piotr and Korzeniowski, Przemysław and Trzciński, Tomasz and Sitek, Arkadiusz},
-        title = { { GEPAR3D: Geometry Prior-Assisted Learning for 3D Tooth Segmentation } },
-        booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2025},
-        year = {2025},
-        publisher = {Springer Nature Switzerland},
-        volume = {LNCS 15961},
-        month = {September},
-        page = {216 -- 226}
+@inproceedings{szczepanski2025gepar3d,
+  title={Gepar3d: Geometry prior-assisted learning for 3d tooth segmentation},
+  author={Szczepa{\'n}ski, Tomasz and P{\l}otka, Szymon and Grzeszczyk, Michal K and Adamowicz, Arleta and Fudalej, Piotr and Korzeniowski, Przemys{\l}aw and Trzci{\'n}ski, Tomasz and Sitek, Arkadiusz},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={218--228},
+  year={2025},
+  organization={Springer}
 }
 ```
